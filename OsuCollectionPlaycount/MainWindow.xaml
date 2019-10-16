@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OsuCollectionPlaycount"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Collection Playtime Calculator" Width="900" Height="392"
+        ResizeMode="NoResize"
+        >
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <Border Margin="5" BorderBrush="Gray" BorderThickness="1">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="320">
+                    <DockPanel VerticalAlignment="Top" Height="35">
+                        <TextBlock Margin="5" VerticalAlignment="Center">Collections</TextBlock>
+                        <Button Margin="5" Width="80" HorizontalAlignment="Right" Command="{Binding ReloadCommand}">Reload</Button>
+                    </DockPanel>
+                    <ListView ItemsSource="{Binding Collections}" Margin="5" SelectedItem="{Binding SelectedCollection}" Height="280" SelectionMode="Single">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Width="275">
+                                    <TextBlock Text="{Binding Name}"  MaxWidth="200" />
+                                    <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" Text="{Binding Playtime}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Width="555">
+                    <DockPanel VerticalAlignment="Top" Height="35">
+                        <TextBlock VerticalAlignment="Center" Margin="5">Maps</TextBlock>
+                        <DockPanel HorizontalAlignment="Right" Width="150">
+                            <TextBlock VerticalAlignment="Center" Margin="5" HorizontalAlignment="Right">Sort</TextBlock>
+                            <ComboBox Margin="5" Width="100" HorizontalAlignment="Right" SelectedIndex="0" SelectedValue="{Binding SelectedSorting}">
+                                <TextBlock>By difficulty</TextBlock>
+                                <TextBlock>By title</TextBlock>
+                                <TextBlock>By playtime</TextBlock>
+                            </ComboBox>
+                        </DockPanel>
+                    </DockPanel>
+
+                    <ListView ItemsSource="{Binding SelectedCollection.Maps}" Margin="5" Height="280" SelectionMode="Single">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Width="510">
+                                    <TextBlock Text="{Binding Name}" MaxWidth="430" />
+                                    <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right"  Text="{Binding Playtime}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
 </Window>
