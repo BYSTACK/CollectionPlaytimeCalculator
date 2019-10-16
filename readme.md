@@ -11,3 +11,12 @@ Download the latest version from
 [.NET Framework.](https://www.microsoft.com/en-us/download/details.aspx?id=49981)
 Upon launching, the program will attempt to find osu directory automatically. If it fails, you will be presented with a prompt asking you to select the directory manually.
 Please select osu your installation directory, e.g. D:\Program Files\osu!
+
+# Limitations
+The program uses this formula to calculate playtime for a map:
+
+```
+Map playtime = Map drain time * Number of plays in local ranking
+```
+This means that only finished plays count towards playtime. Any unfinished or failed plays won't added to the playtime.
+The formula also does not include break time.
