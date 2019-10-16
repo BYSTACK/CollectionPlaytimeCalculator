@@ -1,4 +1,4 @@
-# Osu collection playtime calculator
+# osu! collection playtime calculator
 This program is designed to show you how much time you have spent playing maps from each of your collections.
 It calculates playtime for each map as well as total playtime in a collection.
 
